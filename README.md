@@ -1,6 +1,6 @@
 # DevStudy AI Suite Web
 
-![DevStudy AI Suite banner](public/window.svg)
+![DevStudy AI Suite banner](public/bannner.gif)
 
 DevStudy AI Suite is a student-focused productivity hub that bundles three lightweight experiences inside a responsive Next.js 15 application:
 
