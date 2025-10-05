@@ -1,0 +1,21 @@
+# DevStudy AI Suite – Copilot Guidance
+
+- Read `PRD.md` before any estimate or change; scope is limited to DevStudy Chatbot, Tools, and Notes features described there.
+- Confirm `github.copilot.chat.codeGeneration.useInstructionFiles` is enabled so these rules apply to every chat.
+- When planning or implementing any module, call `mcp_context7_get-library-docs` for Next.js, Tailwind, and OpenRouter updates before writing code.
+- Framework stack: Next.js 15 App Router with React 19 and TypeScript—use `app/*` route segments, nested layouts, and `next/font` (see `app/layout.tsx`). Avoid legacy `pages/` APIs.
+- Global styling lives in `app/globals.css`; Tailwind CSS v4 is imported with `@import "tailwindcss"` and themed through `@theme inline` CSS variables. Extend tokens there instead of bespoke CSS.
+- Fonts: `Bricolage_Grotesque` and `Google_Sans_Code` are wired via `next/font/google` in `app/layout.tsx`; add new fonts the same way to benefit from automatic optimization.
+- UI stance: touch-friendly layouts, 4px spacing rhythm, light/dark themes driven by `--background/--foreground` CSS variables, and minimal animation per PRD section 4.
+- Build DevStudy modules as App Router route groups (`app/(chatbot)`, `app/(tools)`, `app/(notes)` etc.) with shared components extracted into `app/_components` or similar for reuse.
+- Run workflows with `npm run dev` (Turbopack dev server), `npm run build` (Turbopack production build), and `npm run lint` (flat ESLint config in `eslint.config.mjs`); run `npx tsc --noEmit` when you need an explicit type check.
+- Route handlers belong under `app/api/*`; proxy OpenRouter calls with `fetch` + `ReadableStream` and validate that a user-supplied API key is present before forwarding the request.
+- Limit AI integrations to documented OpenRouter free-tier presets (e.g., `openrouter/auto:free`, `deepseek/deepseek-r1:free`); never commit project-owned keys and always require user entry via a settings flow.
+- Chatbot responses must stream into Markdown renderers with syntax-highlighted code blocks and copy buttons; reuse shared prompt templates across the chatbot and AI-backed tools.
+- Non-AI utilities (JSON/YAML formatter, UUID generator, Base64, Markdown ⇄ HTML) run fully client-side—no server calls or Supabase usage.
+- Notes ingestion uses pdf.js or native file APIs for PDF/TXT, chunks text on the client, and only stores structured results in Supabase when it fits the sprint.
+- Supabase is reserved for auth plus lightweight persistence (profiles, documents, notes, optional chat history); guests fall back to browser storage with clear limits per PRD 5.3.
+- Enforce accessibility: semantic HTML, keyboard navigation, focus management, and copy-friendly outputs, matching PRD sections 4 and 6.
+- Prefer built-in Web APIs (Web Streams, FileReader, Intl) and avoid large dependencies unless PRD scope demands them.
+- When editing files, use incremental patches (`apply_patch`), keep comments rare and purposeful, and default to ASCII.
+- Suggest follow-up validation after changes (lint, build, targeted smoke test) to stay aligned with the zero-cost tooling described in the PRD.

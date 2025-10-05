@@ -1,0 +1,88 @@
+/*
+  Catppuccin Mocha theme for Highlight.js
+  Source: https://github.com/catppuccin/highlightjs
+  License: MIT
+*/
+
+html.dark .hljs {
+  color: #cdd6f4;
+  background: transparent;
+}
+
+html.dark .hljs::selection,
+html.dark .hljs span::selection {
+  background: #45475a;
+}
+
+html.dark .hljs-comment,
+html.dark .hljs-quote {
+  color: #6c7086;
+  font-style: italic;
+}
+
+html.dark .hljs-doctag,
+html.dark .hljs-formula,
+html.dark .hljs-keyword,
+html.dark .hljs-template-tag,
+html.dark .hljs-template-variable {
+  color: #cba6f7;
+}
+
+html.dark .hljs-built_in,
+html.dark .hljs-class .hljs-title,
+html.dark .hljs-attr,
+html.dark .hljs-attribute,
+html.dark .hljs-number,
+html.dark .hljs-selector-class,
+html.dark .hljs-selector-id,
+html.dark .hljs-title {
+  color: #f38ba8;
+}
+
+html.dark .hljs-name,
+html.dark .hljs-section,
+html.dark .hljs-selector-tag,
+html.dark .hljs-tag {
+  color: #f2cdcd;
+}
+
+html.dark .hljs-literal,
+html.dark .hljs-meta,
+html.dark .hljs-meta .hljs-keyword,
+html.dark .hljs-meta .hljs-string,
+html.dark .hljs-regexp,
+html.dark .hljs-selector-attr,
+html.dark .hljs-string,
+html.dark .hljs-symbol {
+  color: #a6e3a1;
+}
+
+html.dark .hljs-addition,
+html.dark .hljs-bullet,
+html.dark .hljs-code,
+html.dark .hljs-link,
+html.dark .hljs-params,
+html.dark .hljs-punctuation {
+  color: #94e2d5;
+}
+
+html.dark .hljs-deletion {
+  color: #f38ba8;
+}
+
+html.dark .hljs-variable,
+html.dark .hljs-variable.constant {
+  color: #fab387;
+}
+
+html.dark .hljs-operator {
+  color: #f8bd96;
+}
+
+html.dark .hljs-emphasis {
+  font-style: italic;
+}
+
+html.dark .hljs-strong {
+  font-weight: 600;
+}

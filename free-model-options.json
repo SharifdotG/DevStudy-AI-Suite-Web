@@ -1,0 +1,281 @@
+{
+  "reasoning": [
+    {
+      "id": "x-ai/grok-4-fast:free",
+      "label": "xAI: Grok 4 Fast (free)",
+      "description": "Grok 4 Fast is xAI's latest multimodal model with SOTA cost-efficiency and a 2M token context window. It comes in two flavors: non-reasoning and reasoning. R..."
+    },
+    {
+      "id": "alibaba/tongyi-deepresearch-30b-a3b:free",
+      "label": "Tongyi DeepResearch 30B A3B (free)",
+      "description": "Tongyi DeepResearch is an agentic large language model developed by Tongyi Lab, with 30 billion total parameters activating only 3 billion per token. It's op..."
+    },
+    {
+      "id": "meituan/longcat-flash-chat:free",
+      "label": "Meituan: LongCat Flash Chat (free)",
+      "description": "LongCat-Flash-Chat is a large-scale Mixture-of-Experts (MoE) model with 560B total parameters, of which 18.6B 31.3B ( 27B on average) are dynamically activat..."
+    },
+    {
+      "id": "nvidia/nemotron-nano-9b-v2:free",
+      "label": "NVIDIA: Nemotron Nano 9B V2 (free)",
+      "description": "NVIDIA-Nemotron-Nano-9B-v2 is a large language model (LLM) trained from scratch by NVIDIA, and designed as a unified model for both reasoning and non-reasoni..."
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3.1:free",
+      "label": "DeepSeek: DeepSeek V3.1 (free)",
+      "description": "DeepSeek-V3.1 is a large hybrid reasoning model (671B parameters, 37B active) that supports both thinking and non-thinking modes via prompt templates. It ext..."
+    },
+    {
+      "id": "openai/gpt-oss-120b:free",
+      "label": "OpenAI: gpt-oss-120b (free)",
+      "description": "gpt-oss-120b is an open-weight, 117B-parameter Mixture-of-Experts (MoE) language model from OpenAI designed for high-reasoning, agentic, and general-purpose ..."
+    },
+    {
+      "id": "openai/gpt-oss-20b:free",
+      "label": "OpenAI: gpt-oss-20b (free)",
+      "description": "gpt-oss-20b is an open-weight 21B parameter model released by OpenAI under the Apache 2.0 license. It uses a Mixture-of-Experts (MoE) architecture with 3.6B ..."
+    },
+    {
+      "id": "z-ai/glm-4.5-air:free",
+      "label": "Z.AI: GLM 4.5 Air (free)",
+      "description": "GLM-4.5-Air is the lightweight variant of our latest flagship model family, also purpose-built for agent-centric applications. Like GLM-4.5, it adopts the Mi..."
+    },
+    {
+      "id": "qwen/qwen3-coder:free",
+      "label": "Qwen: Qwen3 Coder 480B A35B (free)",
+      "description": "Qwen3-Coder-480B-A35B-Instruct is a Mixture-of-Experts (MoE) code generation model developed by the Qwen team. It is optimized for agentic coding tasks such ..."
+    },
+    {
+      "id": "moonshotai/kimi-k2:free",
+      "label": "MoonshotAI: Kimi K2 0711 (free)",
+      "description": "Kimi K2 Instruct is a large-scale Mixture-of-Experts (MoE) language model developed by Moonshot AI, featuring 1 trillion total parameters with 32 billion act..."
+    },
+    {
+      "id": "google/gemma-3n-e2b-it:free",
+      "label": "Google: Gemma 3n 2B (free)",
+      "description": "Gemma 3n E2B IT is a multimodal, instruction-tuned model developed by Google DeepMind, designed to operate efficiently at an effective parameter size of 2B w..."
+    },
+    {
+      "id": "tencent/hunyuan-a13b-instruct:free",
+      "label": "Tencent: Hunyuan A13B Instruct (free)",
+      "description": "Hunyuan-A13B is a 13B active parameter Mixture-of-Experts (MoE) language model developed by Tencent, with a total parameter count of 80B and support for reas..."
+    },
+    {
+      "id": "tngtech/deepseek-r1t2-chimera:free",
+      "label": "TNG: DeepSeek R1T2 Chimera (free)",
+      "description": "DeepSeek-TNG-R1T2-Chimera is the second-generation Chimera model from TNG Tech. It is a 671 B-parameter mixture-of-experts text-generation model assembled fr..."
+    },
+    {
+      "id": "moonshotai/kimi-dev-72b:free",
+      "label": "MoonshotAI: Kimi Dev 72B (free)",
+      "description": "Kimi-Dev-72B is an open-source large language model fine-tuned for software engineering and issue resolution tasks. Based on Qwen2.5-72B, it is optimized usi..."
+    },
+    {
+      "id": "deepseek/deepseek-r1-0528-qwen3-8b:free",
+      "label": "DeepSeek: Deepseek R1 0528 Qwen3 8B (free)",
+      "description": "DeepSeek-R1-0528 is a lightly upgraded release of DeepSeek R1 that taps more compute and smarter post-training tricks, pushing its reasoning and inference to..."
+    },
+    {
+      "id": "deepseek/deepseek-r1-0528:free",
+      "label": "DeepSeek: R1 0528 (free)",
+      "description": "May 28th update to the [original DeepSeek R1](/deepseek/deepseek-r1) Performance on par with [OpenAI o1](/openai/o1), but open-sourced and with fully open re..."
+    },
+    {
+      "id": "qwen/qwen3-4b:free",
+      "label": "Qwen: Qwen3 4B (free)",
+      "description": "Qwen3-4B is a 4 billion parameter dense language model from the Qwen3 series, designed to support both general-purpose and reasoning-intensive tasks. It intr..."
+    },
+    {
+      "id": "qwen/qwen3-30b-a3b:free",
+      "label": "Qwen: Qwen3 30B A3B (free)",
+      "description": "Qwen3, the latest generation in the Qwen large language model series, features both dense and mixture-of-experts (MoE) architectures to excel in reasoning, m..."
+    },
+    {
+      "id": "qwen/qwen3-8b:free",
+      "label": "Qwen: Qwen3 8B (free)",
+      "description": "Qwen3-8B is a dense 8.2B parameter causal language model from the Qwen3 series, designed for both reasoning-heavy tasks and efficient dialogue. It supports s..."
+    },
+    {
+      "id": "qwen/qwen3-14b:free",
+      "label": "Qwen: Qwen3 14B (free)",
+      "description": "Qwen3-14B is a dense 14.8B parameter causal language model from the Qwen3 series, designed for both complex reasoning and efficient dialogue. It supports sea..."
+    },
+    {
+      "id": "qwen/qwen3-235b-a22b:free",
+      "label": "Qwen: Qwen3 235B A22B (free)",
+      "description": "Qwen3-235B-A22B is a 235B parameter mixture-of-experts (MoE) model developed by Qwen, activating 22B parameters per forward pass. It supports seamless switch..."
+    },
+    {
+      "id": "tngtech/deepseek-r1t-chimera:free",
+      "label": "TNG: DeepSeek R1T Chimera (free)",
+      "description": "DeepSeek-R1T-Chimera is created by merging DeepSeek-R1 and DeepSeek-V3 (0324), combining the reasoning capabilities of R1 with the token efficiency improveme..."
+    },
+    {
+      "id": "microsoft/mai-ds-r1:free",
+      "label": "Microsoft: MAI DS R1 (free)",
+      "description": "MAI-DS-R1 is a post-trained variant of DeepSeek-R1 developed by the Microsoft AI team to improve the model s responsiveness on previously blocked topics whil..."
+    },
+    {
+      "id": "arliai/qwq-32b-arliai-rpr-v1:free",
+      "label": "ArliAI: QwQ 32B RpR v1 (free)",
+      "description": "QwQ-32B-ArliAI-RpR-v1 is a 32B parameter model fine-tuned from Qwen/QwQ-32B using a curated creative writing and roleplay dataset originally developed for th..."
+    },
+    {
+      "id": "agentica-org/deepcoder-14b-preview:free",
+      "label": "Agentica: Deepcoder 14B Preview (free)",
+      "description": "DeepCoder-14B-Preview is a 14B parameter code generation model fine-tuned from DeepSeek-R1-Distill-Qwen-14B using reinforcement learning with GRPO+ and itera..."
+    },
+    {
+      "id": "moonshotai/kimi-vl-a3b-thinking:free",
+      "label": "MoonshotAI: Kimi VL A3B Thinking (free)",
+      "description": "Kimi-VL is a lightweight Mixture-of-Experts vision-language model that activates only 2.8B parameters per step while delivering strong performance on multimo..."
+    },
+    {
+      "id": "meta-llama/llama-4-maverick:free",
+      "label": "Meta: Llama 4 Maverick (free)",
+      "description": "Llama 4 Maverick 17B Instruct (128E) is a high-capacity multimodal language model from Meta, built on a mixture-of-experts (MoE) architecture with 128 expert..."
+    },
+    {
+      "id": "meta-llama/llama-4-scout:free",
+      "label": "Meta: Llama 4 Scout (free)",
+      "description": "Llama 4 Scout 17B Instruct (16E) is a mixture-of-experts (MoE) language model developed by Meta, activating 17 billion parameters out of a total of 109B. It ..."
+    },
+    {
+      "id": "qwen/qwen2.5-vl-32b-instruct:free",
+      "label": "Qwen: Qwen2.5 VL 32B Instruct (free)",
+      "description": "Qwen2.5-VL-32B is a multimodal vision-language model fine-tuned through reinforcement learning for enhanced mathematical reasoning, structured outputs, and v..."
+    },
+    {
+      "id": "mistralai/mistral-small-3.1-24b-instruct:free",
+      "label": "Mistral: Mistral Small 3.1 24B (free)",
+      "description": "Mistral Small 3.1 24B Instruct is an upgraded variant of Mistral Small 3 (2501), featuring 24 billion parameters with advanced multimodal capabilities. It pr..."
+    },
+    {
+      "id": "google/gemma-3-4b-it:free",
+      "label": "Google: Gemma 3 4B (free)",
+      "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 langu..."
+    },
+    {
+      "id": "google/gemma-3-12b-it:free",
+      "label": "Google: Gemma 3 12B (free)",
+      "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 langu..."
+    },
+    {
+      "id": "google/gemma-3-27b-it:free",
+      "label": "Google: Gemma 3 27B (free)",
+      "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 langu..."
+    },
+    {
+      "id": "nousresearch/deephermes-3-llama-3-8b-preview:free",
+      "label": "Nous: DeepHermes 3 Llama 3 8B Preview (free)",
+      "description": "DeepHermes 3 Preview is the latest version of our flagship Hermes series of LLMs by Nous Research, and one of the first models in the world to unify Reasonin..."
+    },
+    {
+      "id": "cognitivecomputations/dolphin3.0-r1-mistral-24b:free",
+      "label": "Dolphin3.0 R1 Mistral 24B (free)",
+      "description": "Dolphin 3.0 R1 is the next generation of the Dolphin series of instruct-tuned models. Designed to be the ultimate general purpose local model, enabling codin..."
+    },
+    {
+      "id": "deepseek/deepseek-r1-distill-llama-70b:free",
+      "label": "DeepSeek: R1 Distill Llama 70B (free)",
+      "description": "DeepSeek R1 Distill Llama 70B is a distilled large language model based on [Llama-3.3-70B-Instruct](/meta-llama/llama-3.3-70b-instruct), using outputs from [..."
+    },
+    {
+      "id": "deepseek/deepseek-r1:free",
+      "label": "DeepSeek: R1 (free)",
+      "description": "DeepSeek R1 is here: Performance on par with [OpenAI o1](/openai/o1), but open-sourced and with fully open reasoning tokens. It's 671B parameters in size, wi..."
+    },
+    {
+      "id": "qwen/qwen-2.5-coder-32b-instruct:free",
+      "label": "Qwen2.5 Coder 32B Instruct (free)",
+      "description": "Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). Qwen2.5-Coder brings the following improvements ..."
+    },
+    {
+      "id": "meta-llama/llama-3.2-3b-instruct:free",
+      "label": "Meta: Llama 3.2 3B Instruct (free)",
+      "description": "Llama 3.2 3B is a 3-billion-parameter multilingual large language model, optimized for advanced natural language processing tasks like dialogue generation, r..."
+    }
+  ],
+  "general": [
+    {
+      "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+      "label": "Venice: Uncensored (free)",
+      "description": "Venice Uncensored Dolphin Mistral 24B Venice Edition is a fine-tuned variant of Mistral-Small-24B-Instruct-2501, developed by dphn.ai in collaboration with V..."
+    },
+    {
+      "id": "mistralai/mistral-small-3.2-24b-instruct:free",
+      "label": "Mistral: Mistral Small 3.2 24B (free)",
+      "description": "Mistral-Small-3.2-24B-Instruct-2506 is an updated 24B parameter model from Mistral optimized for instruction following, repetition reduction, and improved fu..."
+    },
+    {
+      "id": "mistralai/devstral-small-2505:free",
+      "label": "Mistral: Devstral Small 2505 (free)",
+      "description": "Devstral-Small-2505 is a 24B parameter agentic LLM fine-tuned from Mistral-Small-3.1, jointly developed by Mistral AI and All Hands AI for advanced software ..."
+    },
+    {
+      "id": "google/gemma-3n-e4b-it:free",
+      "label": "Google: Gemma 3n 4B (free)",
+      "description": "Gemma 3n E4B-it is optimized for efficient execution on mobile and low-resource devices, such as phones, laptops, and tablets. It supports multimodal inputs ..."
+    },
+    {
+      "id": "meta-llama/llama-3.3-8b-instruct:free",
+      "label": "Meta: Llama 3.3 8B Instruct (free)",
+      "description": "A lightweight and ultra-fast variant of Llama 3.3 70B, for use when quick response times are needed most."
+    },
+    {
+      "id": "shisa-ai/shisa-v2-llama3.3-70b:free",
+      "label": "Shisa AI: Shisa V2 Llama 3.3 70B (free)",
+      "description": "Shisa V2 Llama 3.3 70B is a bilingual Japanese-English chat model fine-tuned by Shisa.AI on Meta s Llama-3.3-70B-Instruct base. It prioritizes Japanese langu..."
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3-0324:free",
+      "label": "DeepSeek: DeepSeek V3 0324 (free)",
+      "description": "DeepSeek V3, a 685B-parameter, mixture-of-experts model, is the latest iteration of the flagship chat model family from the DeepSeek team. It succeeds the [D..."
+    },
+    {
+      "id": "cognitivecomputations/dolphin3.0-mistral-24b:free",
+      "label": "Dolphin3.0 Mistral 24B (free)",
+      "description": "Dolphin 3.0 is the next generation of the Dolphin series of instruct-tuned models. Designed to be the ultimate general purpose local model, enabling coding, ..."
+    },
+    {
+      "id": "qwen/qwen2.5-vl-72b-instruct:free",
+      "label": "Qwen: Qwen2.5 VL 72B Instruct (free)",
+      "description": "Qwen2.5-VL is proficient in recognizing common objects such as flowers, birds, fish, and insects. It is also highly capable of analyzing texts, charts, icons..."
+    },
+    {
+      "id": "mistralai/mistral-small-24b-instruct-2501:free",
+      "label": "Mistral: Mistral Small 3 (free)",
+      "description": "Mistral Small 3 is a 24B-parameter language model optimized for low-latency performance across common AI tasks. Released under the Apache 2.0 license, it fea..."
+    },
+    {
+      "id": "google/gemini-2.0-flash-exp:free",
+      "label": "Google: Gemini 2.0 Flash Experimental (free)",
+      "description": "Gemini Flash 2.0 offers a significantly faster time to first token (TTFT) compared to [Gemini Flash 1.5](/google/gemini-flash-1.5), while maintaining quality..."
+    },
+    {
+      "id": "meta-llama/llama-3.3-70b-instruct:free",
+      "label": "Meta: Llama 3.3 70B Instruct (free)",
+      "description": "The Meta Llama 3.3 multilingual large language model (LLM) is a pretrained and instruction tuned generative model in 70B (text in/text out). The Llama 3.3 in..."
+    },
+    {
+      "id": "qwen/qwen-2.5-72b-instruct:free",
+      "label": "Qwen2.5 72B Instruct (free)",
+      "description": "Qwen2.5 72B is the latest series of Qwen large language models. Qwen2.5 brings the following improvements upon Qwen2: - Significantly more knowledge and has ..."
+    },
+    {
+      "id": "mistralai/mistral-nemo:free",
+      "label": "Mistral: Mistral Nemo (free)",
+      "description": "A 12B parameter model with a 128k token context length built by Mistral in collaboration with NVIDIA. The model is multilingual, supporting English, French, ..."
+    },
+    {
+      "id": "google/gemma-2-9b-it:free",
+      "label": "Google: Gemma 2 9B (free)",
+      "description": "Gemma 2 9B by Google is an advanced, open-source language model that sets a new standard for efficiency and performance in its size class. Designed for a wid..."
+    },
+    {
+      "id": "mistralai/mistral-7b-instruct:free",
+      "label": "Mistral: Mistral 7B Instruct (free)",
+      "description": "A high-performing, industry-standard 7.3B parameter model, with optimizations for speed and context length. *Mistral 7B Instruct has multiple version variant..."
+    }
+  ]
+}
