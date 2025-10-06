@@ -9,12 +9,7 @@ import {
   type KeyboardEvent as ReactKeyboardEvent,
 } from "react";
 import { ChatMarkdown } from "../../../_components/chat-markdown";
-import {
-  DEFAULT_MODEL,
-  MODEL_GROUPS,
-  MODEL_OPTIONS,
-  useSettings,
-} from "../../../_components/settings-context";
+import { DEFAULT_MODEL, useSettings, type ModelOption } from "../../../_components/settings-context";
 import { useTheme } from "../../../_components/theme-provider";
 import { useSupabase } from "../../../_components/supabase-provider";
 import type { ChatSessionRow, Database } from "@/lib/supabase/types";
@@ -310,7 +305,16 @@ function logSupabaseError(label: string, error: unknown) {
 }
 
 export default function ChatbotPage() {
-  const { apiKey, defaultModel, setDefaultModel } = useSettings();
+  const {
+    apiKey,
+    defaultModel,
+    setDefaultModel,
+    modelGroups,
+    modelOptions,
+    modelsLoading,
+    modelsError,
+    refreshModels,
+  } = useSettings();
   const { supabase, session: authSession } = useSupabase();
   const { resolvedTheme } = useTheme();
   const isDarkMode = resolvedTheme === "dark";
@@ -319,9 +323,17 @@ export default function ChatbotPage() {
   const sanitizedKey = apiKey.trim();
   const hasKey = sanitizedKey.length > 0;
   const activeModel = defaultModel || DEFAULT_MODEL;
-  const activeModelOption = useMemo(() => {
-    return MODEL_OPTIONS.find((option) => option.id === activeModel) ?? MODEL_OPTIONS[0]!;
-  }, [activeModel]);
+  const activeModelOption = useMemo<ModelOption>(() => {
+    if (!modelOptions.length) {
+      return {
+        id: activeModel,
+        label: activeModel,
+        description: "Model selected while the catalog is unavailable.",
+      };
+    }
+
+    return modelOptions.find((option) => option.id === activeModel) ?? modelOptions[0]!;
+  }, [activeModel, modelOptions]);
 
   const [sessions, setSessions] = useState<ChatSession[]>([]);
   const sessionsRef = useRef<ChatSession[]>([]);
@@ -1291,34 +1303,63 @@ export default function ChatbotPage() {
                         Available models
                       </p>
                       <div className="max-h-80 space-y-3 overflow-y-auto pr-1">
-                        {MODEL_GROUPS.map((group) => (
-                          <div key={group.id} className="space-y-1">
-                            <p className="px-2 text-[11px] font-semibold uppercase tracking-wide text-white/45">
-                              {group.label}
-                            </p>
-                            {group.options.map((option) => {
-                              const isActiveModel = option.id === activeModel;
-                              return (
-                                <button
-                                  key={option.id}
-                                  type="button"
-                                  onClick={() => {
-                                    setDefaultModel(option.id);
-                                    setModelMenuOpen(false);
-                                  }}
-                                  className={`w-full rounded-xl px-3 py-2 text-left transition ${
-                                    isActiveModel
-                                      ? "bg-white/15 text-white"
-                                      : "text-white/80 hover:bg-white/10 hover:text-white"
-                                  }`}
-                                >
-                                  <span className="block text-sm font-semibold">{option.label}</span>
-                                  <span className="mt-0.5 block text-xs text-white/55">{option.description}</span>
-                                </button>
-                              );
-                            })}
+                        {modelsLoading ? (
+                          <p className="px-2 text-[11px] font-semibold uppercase tracking-wide text-white/60">
+                            Syncing free models...
+                          </p>
+                        ) : null}
+
+                        {modelsError ? (
+                          <div className="space-y-2 rounded-xl border border-amber-400/50 bg-amber-500/10 p-3 text-xs text-amber-200">
+                            <p>{modelsError}</p>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                void refreshModels();
+                              }}
+                              className="inline-flex items-center gap-1 rounded-full border border-amber-300/70 px-3 py-1 font-semibold text-amber-200 transition hover:border-amber-200 hover:text-amber-100"
+                            >
+                              Retry
+                            </button>
                           </div>
-                        ))}
+                        ) : null}
+
+                        {modelGroups.length
+                          ? modelGroups.map((group) => (
+                              <div key={group.id} className="space-y-1">
+                                <p className="px-2 text-[11px] font-semibold uppercase tracking-wide text-white/45">
+                                  {group.label}
+                                </p>
+                                {group.options.map((option) => {
+                                  const isActiveModel = option.id === activeModel;
+                                  return (
+                                    <button
+                                      key={option.id}
+                                      type="button"
+                                      onClick={() => {
+                                        setDefaultModel(option.id);
+                                        setModelMenuOpen(false);
+                                      }}
+                                      className={`w-full rounded-xl px-3 py-2 text-left transition ${
+                                        isActiveModel
+                                          ? "bg-white/15 text-white"
+                                          : "text-white/80 hover:bg-white/10 hover:text-white"
+                                      }`}
+                                    >
+                                      <span className="block text-sm font-semibold">{option.label}</span>
+                                      <span className="mt-0.5 block text-xs text-white/55">{option.description}</span>
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            ))
+                          : !modelsLoading && !modelsError
+                            ? (
+                                <p className="px-2 text-[11px] font-semibold uppercase tracking-wide text-white/50">
+                                  No models available. Add your API key or retry.
+                                </p>
+                              )
+                            : null}
                       </div>
                     </div>
                   ) : null}

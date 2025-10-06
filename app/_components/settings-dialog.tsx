@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
-import { MODEL_GROUPS, MODEL_OPTIONS, useSettings } from "./settings-context";
+import { useSettings } from "./settings-context";
 
 type SettingsDialogProps = {
   open: boolean;
@@ -9,7 +9,18 @@ type SettingsDialogProps = {
 };
 
 export function SettingsDialog({ open, onClose }: SettingsDialogProps) {
-  const { apiKey, setApiKey, clearApiKey, defaultModel, setDefaultModel } = useSettings();
+  const {
+    apiKey,
+    setApiKey,
+    clearApiKey,
+    defaultModel,
+    setDefaultModel,
+    modelGroups,
+    modelOptions,
+    modelsLoading,
+    modelsError,
+    refreshModels,
+  } = useSettings();
   const [input, setInput] = useState(apiKey);
   const [selectedModel, setSelectedModel] = useState(defaultModel);
   const [status, setStatus] = useState<string | null>(null);
@@ -47,9 +58,15 @@ export function SettingsDialog({ open, onClose }: SettingsDialogProps) {
     }
   }, [open]);
 
+  useEffect(() => {
+    if (!modelOptions.some((option) => option.id === selectedModel) && modelOptions.length) {
+      setSelectedModel(modelOptions[0]!.id);
+    }
+  }, [modelOptions, selectedModel]);
+
   const modelDescriptions = useMemo(() => {
-    return new Map(MODEL_OPTIONS.map((option) => [option.id, option.description]));
-  }, []);
+    return new Map(modelOptions.map((option) => [option.id, option.description]));
+  }, [modelOptions]);
 
   if (!open) {
     return null;
@@ -147,18 +164,41 @@ export function SettingsDialog({ open, onClose }: SettingsDialogProps) {
               onChange={(event) => setSelectedModel(event.target.value)}
               className="rounded-xl border border-border bg-background px-3 py-2 text-base outline-none focus:border-accent focus:ring-2 focus:ring-accent/30"
             >
-              {MODEL_GROUPS.map((group) => (
-                <optgroup key={group.id} label={group.label}>
-                  {group.options.map((option) => (
-                    <option key={option.id} value={option.id}>
-                      {option.label}
-                    </option>
-                  ))}
-                </optgroup>
-              ))}
+              {modelGroups.length ? (
+                modelGroups.map((group) => (
+                  <optgroup key={group.id} label={group.label}>
+                    {group.options.map((option) => (
+                      <option key={option.id} value={option.id}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))
+              ) : (
+                <option value="">No models available</option>
+              )}
             </select>
           </label>
-          <p className="text-xs text-foreground/60">{modelDescriptions.get(selectedModel)}</p>
+          <p className="text-xs text-foreground/60">
+            {modelDescriptions.get(selectedModel) ?? "Select a model to view its description."}
+          </p>
+          {modelsLoading ? (
+            <p className="text-xs text-foreground/50">Syncing free models from OpenRouter...</p>
+          ) : null}
+          {modelsError ? (
+            <div className="rounded-xl border border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-700">
+              <p>{modelsError}</p>
+              <button
+                type="button"
+                onClick={() => {
+                  void refreshModels();
+                }}
+                className="mt-2 inline-flex items-center gap-1 rounded-full border border-amber-400 px-3 py-1 font-semibold text-amber-700 transition hover:border-amber-500 hover:text-amber-800"
+              >
+                Retry
+              </button>
+            </div>
+          ) : null}
         </form>
         {status ? (
           <p className="mt-4 text-xs text-foreground/60" role="status">
