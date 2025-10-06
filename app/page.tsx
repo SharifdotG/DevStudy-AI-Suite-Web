@@ -55,19 +55,19 @@ const stats = [
 
 const teamMembers = [
   {
-    name: "Alex Rivera",
+    name: "Sharif Md. Yousuf",
     role: "Product Lead",
     focus: "Aligns the roadmap with coursework milestones and stakeholder demos.",
   },
   {
-    name: "Morgan Chen",
+    name: "Noor Mohammed Priom",
     role: "Frontend Engineer",
     focus: "Polishes the App Router UI, accessibility, and responsive interactions.",
   },
   {
-    name: "Riley Thompson",
-    role: "AI & Data",
-    focus: "Manages prompt templates, analytics, and upcoming Supabase integrations.",
+    name: "Shornali Akter",
+    role: "Tester",
+    focus: "Ensures the quality and reliability of the application through rigorous testing.",
   },
 ];
 
