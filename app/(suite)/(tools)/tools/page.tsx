@@ -1539,6 +1539,7 @@ function QrCodeGeneratorTool() {
       <canvas ref={canvasRef} className="hidden" />
       {qrCodeUrl && (
         <div className="flex justify-center rounded-xl border border-border bg-surface/60 p-6">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={qrCodeUrl} alt="Generated QR Code" className="h-64 w-64 rounded-lg" />
         </div>
       )}
@@ -2475,9 +2476,13 @@ function FaviconGeneratorTool() {
         <div className="rounded-xl border border-border bg-surface/60 p-6">
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-foreground/60">Preview</p>
           <div className="flex items-center gap-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={faviconUrl} alt="Favicon 128x128" className="h-32 w-32 rounded-lg border border-border" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={faviconUrl} alt="Favicon 64x64" className="h-16 w-16 rounded-lg border border-border" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={faviconUrl} alt="Favicon 32x32" className="h-8 w-8 rounded-lg border border-border" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={faviconUrl} alt="Favicon 16x16" className="h-4 w-4 rounded border border-border" />
           </div>
         </div>

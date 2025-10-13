@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { useSettings } from "@/app/_components/settings-context";
 import { Lineicons } from "@lineiconshq/react-lineicons";
 import {
-  Key1Outlined,
   CheckCircle1Outlined,
   XmarkOutlined,
   RefreshCircle1ClockwiseOutlined,

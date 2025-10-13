@@ -56,19 +56,6 @@ export function SiteNav() {
     return metaName || fullName || user.email || "Account";
   }, [user]);
 
-  const initials = useMemo(() => {
-    if (!displayName) {
-      return "";
-    }
-
-    return displayName
-      .split(" ")
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((part) => part.charAt(0).toUpperCase())
-      .join("");
-  }, [displayName]);
-
   useEffect(() => {
     let active = true;
     const currentUser = user;

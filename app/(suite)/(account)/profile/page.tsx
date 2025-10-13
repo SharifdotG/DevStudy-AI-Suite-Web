@@ -64,7 +64,7 @@ const TOOL_LABELS: Record<string, string> = {
   "sql-builder": "SQL Query Builder",
 };
 
-const ACTIVITY_ICONS: Record<ActivityItem["kind"], any> = {
+const ACTIVITY_ICONS: Record<ActivityItem["kind"], typeof Comment1Outlined> = {
   chat: Comment1Outlined,
   note: Notebook1Outlined,
   tool: Hammer1Outlined,
