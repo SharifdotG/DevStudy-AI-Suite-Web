@@ -2,6 +2,13 @@
 
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { useSettings } from "@/app/_components/settings-context";
+import { Lineicons } from "@lineiconshq/react-lineicons";
+import {
+  Key1Outlined,
+  CheckCircle1Outlined,
+  XmarkOutlined,
+  RefreshCircle1ClockwiseOutlined,
+} from "@lineiconshq/free-icons";
 
 type ApiKeySettingsCardProps = {
   initialStatus: "present" | "absent";
@@ -107,15 +114,17 @@ export function ApiKeySettingsCard({ initialStatus }: ApiKeySettingsCardProps) {
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <button
             type="submit"
-            className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-accent-foreground transition hover:bg-accent/90"
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-accent-foreground transition hover:bg-accent/90"
           >
+            <Lineicons icon={CheckCircle1Outlined} size={14} />
             Save key
           </button>
           <button
             type="button"
             onClick={handleClear}
-            className="rounded-full px-4 py-2 text-sm font-semibold text-foreground/60 transition hover:bg-foreground/10"
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-foreground/60 transition hover:bg-foreground/10"
           >
+            <Lineicons icon={XmarkOutlined} size={14} />
             Remove key
           </button>
         </div>
@@ -157,6 +166,7 @@ export function ApiKeySettingsCard({ initialStatus }: ApiKeySettingsCardProps) {
               }}
               className="mt-2 inline-flex items-center gap-1 rounded-full border border-amber-400 px-3 py-1 font-semibold text-amber-700 transition hover:border-amber-500 hover:text-amber-800"
             >
+              <Lineicons icon={RefreshCircle1ClockwiseOutlined} size={12} />
               Retry
             </button>
           </div>

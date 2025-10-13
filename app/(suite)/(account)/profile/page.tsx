@@ -6,6 +6,14 @@ import { ProfileForm } from "./profile-form";
 import { ApiKeySettingsCard } from "./api-key-settings-card";
 import { ApiKeyStatusBadge } from "./api-key-status-badge";
 import type { ChatSessionRow, ProfileRow, Database } from "@/lib/supabase/types";
+import { Lineicons } from "@lineiconshq/react-lineicons";
+import {
+  ArrowRightOutlined,
+  RefreshCircle1ClockwiseOutlined,
+  Comment1Outlined,
+  Notebook1Outlined,
+  Hammer1Outlined,
+} from "@lineiconshq/free-icons";
 
 type SessionSummary = Pick<
   ChatSessionRow,
@@ -56,10 +64,10 @@ const TOOL_LABELS: Record<string, string> = {
   "sql-builder": "SQL Query Builder",
 };
 
-const ACTIVITY_ICONS: Record<ActivityItem["kind"], string> = {
-  chat: "💬",
-  note: "📄",
-  tool: "🛠️",
+const ACTIVITY_ICONS: Record<ActivityItem["kind"], any> = {
+  chat: Comment1Outlined,
+  note: Notebook1Outlined,
+  tool: Hammer1Outlined,
 };
 
 function formatInteger(value: number): string {
@@ -260,7 +268,7 @@ export default async function ProfilePage() {
             className="inline-flex items-center gap-2 rounded-full border border-accent/60 bg-accent px-5 py-2 text-sm font-semibold text-accent-foreground transition hover:bg-accent/90"
           >
             Jump back to chat
-            <span aria-hidden>→</span>
+            <Lineicons icon={ArrowRightOutlined} size={14} />
           </Link>
         </div>
       </header>
@@ -287,7 +295,8 @@ export default async function ProfilePage() {
           <div className="rounded-3xl border border-border/60 bg-surface/95 p-6 shadow-[0_16px_36px_rgba(15,23,42,0.2)]">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold text-foreground">Recent activity</h2>
-              <Link href="/profile" className="text-sm font-semibold text-accent transition hover:text-accent/80">
+              <Link href="/profile" className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition hover:text-accent/80">
+                <Lineicons icon={RefreshCircle1ClockwiseOutlined} size={14} />
                 Refresh
               </Link>
             </div>
@@ -304,8 +313,8 @@ export default async function ProfilePage() {
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-start gap-3">
-                        <span className="text-base" aria-hidden>
-                          {ACTIVITY_ICONS[item.kind]}
+                        <span className="text-foreground/60" aria-hidden>
+                          <Lineicons icon={ACTIVITY_ICONS[item.kind]} size={18} />
                         </span>
                         <div>
                           <p className="font-semibold leading-tight">{item.title}</p>

@@ -8,6 +8,19 @@ import {
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
 } from "react";
+import { Lineicons } from "@lineiconshq/react-lineicons";
+import {
+  PlusOutlined,
+  ClipboardOutlined,
+  RefreshCircle1ClockwiseOutlined,
+  ChevronDownOutlined,
+  EnterOutlined,
+  Comment1Outlined,
+  CheckCircle1Outlined,
+  Pencil1Outlined,
+  Trash3Outlined,
+  XmarkCircleOutlined,
+} from "@lineiconshq/free-icons";
 import { ChatMarkdown } from "../../../_components/chat-markdown";
 import { DEFAULT_MODEL, useSettings, type ModelOption } from "../../../_components/settings-context";
 import { useTheme } from "../../../_components/theme-provider";
@@ -1112,17 +1125,19 @@ export default function ChatbotPage() {
               <button
                 type="button"
                 onClick={handleCreateSession}
-                className="rounded-full border border-dashed border-border px-3 py-1 text-xs font-semibold text-foreground/70 transition hover:border-accent hover:text-accent"
+                className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-border px-3 py-1 text-xs font-semibold text-foreground/70 transition hover:border-accent hover:text-accent"
                 disabled={isStreaming}
               >
-                + New
+                <Lineicons icon={PlusOutlined} size={14} />
+                New
               </button>
             </div>
             <div className="mt-4 space-y-2">
                 {sortedSessions.length === 0 ? (
-                  <p className="rounded-xl border border-dashed border-border/70 bg-background/70 px-3 py-4 text-xs text-foreground/50">
-                    Your chats appear here after you send the first message.
-                  </p>
+                  <div className="flex items-center gap-2 rounded-xl border border-dashed border-border/70 bg-background/70 px-3 py-4 text-xs text-foreground/50">
+                    <Lineicons icon={Comment1Outlined} size={16} className="flex-shrink-0" />
+                    <p>Your chats appear here after you send the first message.</p>
+                  </div>
                 ) : (
                   sortedSessions.map((session) => {
                     const isActive = session.id === activeSessionId;
@@ -1165,12 +1180,13 @@ export default function ChatbotPage() {
           </div>
         </aside>
 
-  <div className="flex min-h-0 flex-1 flex-col gap-5">
-          <div className="relative flex-1 min-h-0 overflow-hidden rounded-3xl border border-border/60 bg-surface/95 p-4 shadow-[0_16px_40px_rgba(15,23,42,0.16)] sm:p-6">
-            <div ref={scrollRef} className="h-full overflow-y-auto pb-24 pr-1 sm:pr-2">
+  <div className="flex flex-1 flex-col gap-5">
+          <div className="relative h-[550px] overflow-hidden rounded-3xl border border-border/60 bg-surface/95 p-4 shadow-[0_16px_40px_rgba(15,23,42,0.16)] sm:p-6">
+            <div ref={scrollRef} className="h-full overflow-y-auto pr-1 sm:pr-2">
               {messages.length === 0 ? (
-                <div className="flex h-full items-center justify-center rounded-2xl border border-dashed border-border/70 bg-background/70 p-6 text-sm text-foreground/60">
-                  Ask about your current assignment, paste a function to review, or regenerate a previous answer.
+                <div className="flex h-full flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-border/70 bg-background/70 p-6 text-sm text-foreground/60">
+                  <Lineicons icon={Comment1Outlined} size={32} className="text-foreground/40" />
+                  <p className="text-center">Ask about your current assignment, paste a function to review, or regenerate a previous answer.</p>
                 </div>
               ) : (
                 <div className="flex flex-col gap-3 pb-2">
@@ -1212,6 +1228,7 @@ export default function ChatbotPage() {
                         {message.status === "streaming" ? (
                           <span className="mt-2 inline-flex items-center gap-2 text-xs text-foreground/60">
                             <span className="h-2 w-2 animate-pulse rounded-full bg-accent" aria-hidden />
+                            <Lineicons icon={RefreshCircle1ClockwiseOutlined} size={12} className="animate-spin" />
                             Streaming
                           </span>
                         ) : null}
@@ -1221,17 +1238,19 @@ export default function ChatbotPage() {
                             <button
                               type="button"
                               onClick={() => handleCopyResponse(message.id, message.content)}
-                              className="rounded-full border border-border px-3 py-1 font-semibold transition hover:border-accent hover:text-accent"
+                              className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 font-semibold transition hover:border-accent hover:text-accent"
                             >
+                              <Lineicons icon={copiedMessageId === message.id ? CheckCircle1Outlined : ClipboardOutlined} size={14} />
                               {copiedMessageId === message.id ? "Copied" : "Copy Markdown"}
                             </button>
                             {isLatestAssistant ? (
                               <button
                                 type="button"
                                 onClick={() => handleRegenerate(message.id)}
-                                className="rounded-full border border-border px-3 py-1 font-semibold transition hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-60"
+                                className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 font-semibold transition hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-60"
                                 disabled={isStreaming}
                               >
+                                <Lineicons icon={RefreshCircle1ClockwiseOutlined} size={14} />
                                 Regenerate
                               </button>
                             ) : null}
@@ -1242,8 +1261,9 @@ export default function ChatbotPage() {
                           <button
                             type="button"
                             onClick={() => handleRegenerate(message.id)}
-                            className="mt-3 rounded-full border border-red-300 px-3 py-1 text-xs font-semibold text-red-600 transition hover:border-red-400 hover:text-red-500"
+                            className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-red-300 px-3 py-1 text-xs font-semibold text-red-600 transition hover:border-red-400 hover:text-red-500"
                           >
+                            <Lineicons icon={RefreshCircle1ClockwiseOutlined} size={14} />
                             Retry last response
                           </button>
                         ) : null}
@@ -1284,18 +1304,11 @@ export default function ChatbotPage() {
                   >
                     <span>Model</span>
                     <span className="hidden sm:inline">· {activeModelOption.label}</span>
-                    <svg
-                      className={`h-3 w-3 transition-transform ${modelMenuOpen ? "rotate-180" : ""}`}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
+                    <Lineicons
+                      icon={ChevronDownOutlined}
+                      size={12}
+                      className={`transition-transform ${modelMenuOpen ? "rotate-180" : ""}`}
+                    />
                   </button>
                   {modelMenuOpen ? (
                     <div className="absolute bottom-full right-0 z-30 mb-2 w-72 rounded-2xl border border-black/70 bg-black p-3 text-left text-white shadow-[0_20px_40px_rgba(15,23,42,0.32)] ring-1 ring-white/10">
@@ -1311,14 +1324,18 @@ export default function ChatbotPage() {
 
                         {modelsError ? (
                           <div className="space-y-2 rounded-xl border border-amber-400/50 bg-amber-500/10 p-3 text-xs text-amber-200">
-                            <p>{modelsError}</p>
+                            <div className="flex items-start gap-2">
+                              <Lineicons icon={XmarkCircleOutlined} size={16} className="mt-0.5 flex-shrink-0" />
+                              <p>{modelsError}</p>
+                            </div>
                             <button
                               type="button"
                               onClick={() => {
                                 void refreshModels();
                               }}
-                              className="inline-flex items-center gap-1 rounded-full border border-amber-300/70 px-3 py-1 font-semibold text-amber-200 transition hover:border-amber-200 hover:text-amber-100"
+                              className="inline-flex items-center gap-1.5 rounded-full border border-amber-300/70 px-3 py-1 font-semibold text-amber-200 transition hover:border-amber-200 hover:text-amber-100"
                             >
+                              <Lineicons icon={RefreshCircle1ClockwiseOutlined} size={14} />
                               Retry
                             </button>
                           </div>
@@ -1367,8 +1384,9 @@ export default function ChatbotPage() {
                 <button
                   type="submit"
                   disabled={!hasKey || isStreaming || !input.trim()}
-                  className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-accent-foreground transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-accent/40"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-accent-foreground transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-accent/40"
                 >
+                  <Lineicons icon={EnterOutlined} size={16} />
                   {isStreaming ? "Waiting" : "Send"}
                 </button>
               </div>
@@ -1457,9 +1475,10 @@ function SessionMenu({ sessionId, onRename, onDelete, disabled }: SessionMenuPro
               setOpen(false);
               onRename(sessionId);
             }}
-            className="flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-foreground/80 transition hover:bg-foreground/10"
+            className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-foreground/80 transition hover:bg-foreground/10"
           >
-            Rename chat
+            <Lineicons icon={Pencil1Outlined} size={14} />
+            <span>Rename chat</span>
           </button>
           <button
             type="button"
@@ -1467,9 +1486,10 @@ function SessionMenu({ sessionId, onRename, onDelete, disabled }: SessionMenuPro
               setOpen(false);
               onDelete(sessionId);
             }}
-            className="flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left text-rose-500 transition hover:bg-rose-500/10"
+            className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-rose-500 transition hover:bg-rose-500/10"
           >
-            Delete chat
+            <Lineicons icon={Trash3Outlined} size={14} />
+            <span>Delete chat</span>
           </button>
         </div>
       ) : null}

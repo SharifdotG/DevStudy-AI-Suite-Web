@@ -4,16 +4,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState, useTransition } from "react";
+import { Lineicons } from "@lineiconshq/react-lineicons";
+import {
+  Home2Outlined,
+  Comment1Outlined,
+  Hammer1Outlined,
+  Notebook1Outlined,
+  Key1Outlined,
+  CheckCircle1Outlined,
+  XmarkCircleOutlined,
+  User4Outlined,
+  ExitOutlined,
+  EnterOutlined,
+} from "@lineiconshq/free-icons";
 import { useSettings } from "./settings-context";
 import { ThemeToggle } from "./theme-toggle";
 import { useSupabase } from "./supabase-provider";
 import { signOut } from "@/app/(auth)/actions";
 
 const navItems = [
-  { href: "/", label: "Overview" },
-  { href: "/chat", label: "Chatbot" },
-  { href: "/tools", label: "Tools" },
-  { href: "/notes", label: "Notes" },
+  { href: "/", label: "Home", icon: Home2Outlined },
+  { href: "/chat", label: "Chatbot", icon: Comment1Outlined },
+  { href: "/tools", label: "Tools", icon: Hammer1Outlined },
+  { href: "/notes", label: "Notes", icon: Notebook1Outlined },
 ];
 
 function isActive(pathname: string, target: string) {
@@ -160,12 +173,13 @@ export function SiteNav() {
                     key={item.href}
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`rounded-full px-3 py-2 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 ${
+                    className={`inline-flex items-center gap-2 rounded-full px-3 py-2 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 ${
                       active
                         ? "bg-foreground text-background shadow"
                         : "text-foreground/70 hover:bg-foreground/10"
                     }`}
                   >
+                    <Lineicons icon={item.icon} size={16} />
                     {item.label}
                   </Link>
                 );
@@ -173,12 +187,13 @@ export function SiteNav() {
             </nav>
             <ThemeToggle />
             <div
-              className={`hidden items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide sm:inline-flex ${
+              className={`hidden items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide sm:inline-flex ${
                 hasKey
                   ? "bg-emerald-500/10 text-emerald-500"
                   : "bg-amber-500/10 text-amber-500"
               }`}
             >
+              <Lineicons icon={hasKey ? CheckCircle1Outlined : XmarkCircleOutlined} size={14} />
               {hasKey ? "Key linked" : "Key needed"}
             </div>
             {user ? (
@@ -198,8 +213,8 @@ export function SiteNav() {
                         unoptimized
                       />
                     ) : (
-                      <span className="grid h-full w-full place-items-center text-sm font-semibold text-foreground">
-                        {initials || "ME"}
+                      <span className="grid h-full w-full place-items-center">
+                        <Lineicons icon={User4Outlined} size={16} className="text-foreground" />
                       </span>
                     )}
                   </span>
@@ -209,16 +224,18 @@ export function SiteNav() {
                   type="button"
                   onClick={handleSignOut}
                   disabled={isSigningOut}
-                  className="rounded-full px-4 py-2 text-sm font-semibold text-foreground/70 transition hover:bg-foreground/10 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-foreground/70 transition hover:bg-foreground/10 disabled:cursor-not-allowed disabled:opacity-60"
                 >
+                  <Lineicons icon={ExitOutlined} size={16} />
                   {isSigningOut ? "Signing out..." : "Sign out"}
                 </button>
               </div>
             ) : (
               <Link
                 href="/login"
-                className="hidden rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background transition hover:bg-foreground/90 sm:inline-flex"
+                className="hidden items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background transition hover:bg-foreground/90 sm:inline-flex"
               >
+                <Lineicons icon={EnterOutlined} size={16} />
                 Log in
               </Link>
             )}
@@ -236,13 +253,14 @@ export function SiteNav() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`flex-1 rounded-full px-2 py-2 text-center text-xs font-semibold transition focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 ${
+                className={`flex flex-1 flex-col items-center gap-1 rounded-full px-2 py-2 text-xs font-semibold transition focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 ${
                   active
                     ? "bg-foreground text-background"
                     : "text-foreground/70 hover:bg-foreground/10"
                 }`}
               >
-                {item.label}
+                <Lineicons icon={item.icon} size={18} />
+                <span className="text-[10px]">{item.label}</span>
               </Link>
             );
           })}
@@ -263,8 +281,8 @@ export function SiteNav() {
                     unoptimized
                   />
                 ) : (
-                  <span className="grid h-full w-full place-items-center truncate text-xs font-semibold text-foreground">
-                    {initials || "ME"}
+                  <span className="grid h-full w-full place-items-center">
+                    <Lineicons icon={User4Outlined} size={18} className="text-foreground" />
                   </span>
                 )}
               </span>
@@ -272,19 +290,21 @@ export function SiteNav() {
           ) : (
             <Link
               href="/login"
-              className="rounded-full border border-border px-3 py-2 text-xs font-semibold text-foreground/70 transition hover:border-accent hover:text-accent"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-2 text-xs font-semibold text-foreground/70 transition hover:border-accent hover:text-accent"
             >
+              <Lineicons icon={EnterOutlined} size={14} />
               Log in
             </Link>
           )}
           <Link
             href="/profile"
-            className={`rounded-full px-3 py-2 text-xs font-semibold transition focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 ${
+            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 ${
               hasKey
                 ? "bg-foreground text-background"
                 : "text-foreground/70 hover:bg-foreground/10"
             }`}
           >
+            <Lineicons icon={hasKey ? User4Outlined : Key1Outlined} size={14} />
             {hasKey ? "Profile" : "Add key"}
           </Link>
         </div>

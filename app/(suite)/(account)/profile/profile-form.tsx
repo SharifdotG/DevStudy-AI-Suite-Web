@@ -5,6 +5,13 @@ import { useActionState, useEffect, useMemo, useRef, useState } from "react";
 import type { ChangeEvent } from "react";
 import { useFormStatus } from "react-dom";
 import { updateProfile, type ProfileActionState } from "./actions";
+import { Lineicons } from "@lineiconshq/react-lineicons";
+import {
+  Upload1Outlined,
+  Trash3Outlined,
+  CheckCircle1Outlined,
+  RefreshCircle1ClockwiseOutlined,
+} from "@lineiconshq/free-icons";
 
 const INITIAL_STATE: ProfileActionState = { status: "idle" };
 
@@ -137,6 +144,7 @@ export function ProfileForm({ displayName, avatarUrl }: ProfileFormProps) {
               htmlFor="avatarFile"
               className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-border/70 px-4 py-2 font-semibold text-foreground/80 transition hover:border-accent hover:text-accent"
             >
+              <Lineicons icon={Upload1Outlined} size={14} />
               Upload new
             </label>
             <button
@@ -145,6 +153,7 @@ export function ProfileForm({ displayName, avatarUrl }: ProfileFormProps) {
               className="inline-flex items-center gap-2 rounded-full border border-transparent px-4 py-2 font-semibold text-foreground/60 transition hover:text-rose-500"
               disabled={!localPreview}
             >
+              <Lineicons icon={Trash3Outlined} size={14} />
               Remove photo
             </button>
           </div>
@@ -194,8 +203,13 @@ function ProfileSubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-accent/50"
+      className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-accent/50"
     >
+      <Lineicons
+        icon={pending ? RefreshCircle1ClockwiseOutlined : CheckCircle1Outlined}
+        size={14}
+        className={pending ? "animate-spin" : ""}
+      />
       {pending ? "Saving..." : "Save changes"}
     </button>
   );
