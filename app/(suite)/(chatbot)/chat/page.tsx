@@ -1364,7 +1364,6 @@ export default function ChatbotPage() {
                                       }`}
                                     >
                                       <span className="block text-sm font-semibold">{option.label}</span>
-                                      <span className="mt-0.5 block text-xs text-white/55">{option.description}</span>
                                     </button>
                                   );
                                 })}
